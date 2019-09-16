@@ -1,8 +1,13 @@
+from getpass import getpass
+
+
 class Model:
     lives = 10
-    answer = "ananas"
     already_used = []
-    trial = len(answer) * ["_"]
+
+    def __init__(self):
+        self.answer = getpass(prompt="Type answer: ")
+        self.trial = len(self.answer) * ["_"]
 
     def process_letter(self, letter):
         self.already_used += [letter]
