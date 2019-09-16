@@ -7,7 +7,6 @@ class Model:
 
     def __init__(self):
         self.answer = getpass(prompt="Type answer: ")
-        self.words = self.answer.split(" ")
         self.trial = len(self.answer) * ["_"]
         self.__swap_sign__(" ")
 
@@ -21,9 +20,14 @@ class Model:
         return changed
 
     def __process_word__(self, word, changed=False):
-        if word in self.words:
-            index = self.answer.index(word)
+        index = 0
+
+        while word in self.answer[index:]:
+            index += self.answer[index:].index(word)
+            print(index)
             self.trial = self.__splice__(self.trial, index, index+len(word), list(word))
+            index += len(word)+1
+            print(index)
             changed = True
 
         self.__substract_life__(changed)
