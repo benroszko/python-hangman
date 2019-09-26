@@ -12,10 +12,11 @@ class Model:
 
     def process_input_value(self, input_value):
         self.already_used += [input_value]
-        self.__process_letter__(input_value) if len(input_value) == 1 else self.__process_word__(input_value)
+        correct = self.__process_letter__(input_value) if len(input_value) == 1 else self.__process_word__(input_value)
+        return correct
 
     def __process_letter__(self, letter):
-        changed = self.__swap_sign__(letter)
+        changed = self.__swap_sign__(sign=letter)
         self.__substract_life__(changed)
         return changed
 
@@ -24,10 +25,8 @@ class Model:
 
         while word in self.answer[index:]:
             index += self.answer[index:].index(word)
-            print(index)
             self.trial = self.__splice__(self.trial, index, index+len(word), list(word))
             index += len(word)+1
-            print(index)
             changed = True
 
         self.__substract_life__(changed)
