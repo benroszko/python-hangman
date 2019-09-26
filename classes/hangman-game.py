@@ -20,7 +20,7 @@ class HangManGame:
                 self.view.wrong_input_len()
             else:
                 if not self.model.process_input_value(input_value):
-                    self.view.wrong_input_value(str(self.model.lives))
+                    self.view.wrong_input_value(self.model.lives)
 
             self.view.show(self.model.trial)
 

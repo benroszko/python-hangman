@@ -6,7 +6,7 @@ class Model:
     already_used = []
 
     def __init__(self):
-        self.answer = getpass(prompt="Type answer: ")
+        self.answer = getpass(prompt="Type answer: ").lower()
         self.trial = len(self.answer) * ["_"]
         self.__swap_sign__(" ")
 

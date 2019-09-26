@@ -1,11 +1,94 @@
 class View:
+    lives_arr = [
+        '''
+        *
+        *
+        *
+        *
+        *
+        *
+        ''',
+        '''
+        * * * * * * *
+        *
+        *
+        *
+        *
+        *
+        ''',
+        '''
+        * * * * * * *
+        *           *
+        *           *
+        *           *
+        *           *
+        *           *
+        ''',
+        '''
+        * * * * * * *
+        *     |     *
+        *           *
+        *           *
+        *           *
+        *           *
+        ''',
+        '''
+        * * * * * * *
+        *     |     *
+        *     O     *
+        *           *
+        *           *
+        *           *
+        ''',
+        '''
+        * * * * * * *
+        *     |     *
+        *     O     *
+        *     |     *
+        *           *
+        *           *
+        ''',
+        '''
+        * * * * * * *
+        *     |     *
+        *    \O     *
+        *     |     *
+        *           *
+        *           *
+        ''',
+        '''
+        * * * * * * *
+        *     |     *
+        *    \O/    *
+        *     |     *
+        *           *
+        *           *
+        ''',
+        '''
+        * * * * * * *
+        *     |     *
+        *    \O/    *
+        *     |     *
+        *    /      *
+        *           *
+        ''',
+        '''
+        * * * * * * *
+        *     |     *
+        *    \O/    *
+        *     |     *
+        *    / \\    *
+        *           *
+        '''
+    ]
+
     def start_game(self, lives, trial):
         print("Let's start the game!")
         print(lives + " lives left.")
         self.show(trial)
 
     def pass_input_value(self):
-        return input("Enter letter: ")
+        return input("Enter input: ").lower()
 
     def print_already_used(self, already_used):
         print("Input has beeen already used.")
@@ -25,7 +108,8 @@ class View:
 
     def wrong_input_value(self, lives):
         print("Answer does not contain input you used.")
-        print(lives + " lives left.")
+        print(str(lives) + " lives left.")
+        print(self.lives_arr[9-lives])
 
     def show(self, trial):
         print(" ".join(trial))
